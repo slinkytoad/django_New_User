@@ -1,0 +1,12 @@
+{% extends 'userdoc/base.html' %} 
+
+{% block content %}
+<br> 
+<div class="container">
+    <form action="/userdoc/new/" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit">
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'userdoc/base.html' %} 
+
+{% block content %} 
+    <h1>New User Packet Creation</h1>
+    <h2>Click here to add a new user</h2>
+        <a href="{% url 'userdoc:new' %}">Add New User</a>
+    <h2>Here is the latest employees list</h2>
+    {% if latest_employee_list %}
+        <ul>
+        {% for employee in latest_employee_list %}
+            <li><a href="{% url 'userdoc:userWelcome' employee.id %}">{{ employee.first_name }} {{ employee.last_name }}</a></li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No employees are available.</p>
+    {% endif %}
+
+{% endblock %}
