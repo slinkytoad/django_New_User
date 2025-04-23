@@ -5,14 +5,14 @@ from .models import Employee
 from .forms import UserCreateForm
 
 def index(request):
-    latest_employee_list = Employee.objects.order_by("-created_at")[:5]
+    latest_employee_list = Employee.objects.order_by("-created_at")[:10]
     context = {
         "latest_employee_list": latest_employee_list,
     }
     return render(request, "userdoc/index.html", context)
 
-def userWelcome(request, employee_id):
-    employee = get_object_or_404(Employee, pk=employee_id)
+def userWelcome(request, slug):
+    employee = get_object_or_404(Employee, slug=slug)
     return render(request, "userdoc/user_welcome.html", {"employee": employee})
 
 def new(request):
@@ -21,10 +21,7 @@ def new(request):
         if form.is_valid():
             # Save the new user to the database
             new_employee = form.save()
-            # Redirect to a success page or render a success message
-            # For example, redirect to the user welcome page
-            return redirect(reverse('userdoc:userWelcome', args=[new_employee.id]))
-            #return HttpResponse("User created successfully!")
+            return redirect(reverse('userdoc:userWelcome', args=[new_employee.slug]))
         else:
             # Handle form errors
             return render(request, "userdoc/user_create.html", {"form": form})

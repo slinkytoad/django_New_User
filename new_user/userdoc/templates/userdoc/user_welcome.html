@@ -1,283 +1,208 @@
+{% extends 'base.html' %} 
+{% load django_bootstrap5 %}
 {% load static %}
-<html>
 
-<head>
-    <style>
-        .admonition.note {
-            border-color: #448aff;
-            border: 0 solid #448aff;
-            break-inside: avoid;
-            display: flow-root;
-            border-radius: .1rem;
-            padding: 0.6rem;
-            margin: 1.5625em 0;
-            border-left-width: .2rem;
-            background-color: rgba(255, 255, 255, 0.024);
-            box-shadow: rgba(0, 0, 0, .05) 10px 10px 10px 10px;
-            width: 90%;
-        }
+{% block title %}
+    User Welcome Page
+{% endblock %}
+    
+{% block content %}
+<article>
+<div class="row">
+    <div class="column left"><h1 id="first-login-cjm">IT Getting Started</h1></div>
+    <div class="column right"><span class="name">{{ employee.first_name }} {{ employee.last_name }}</span><br><span>Created: {{ employee.created_at }}</span></div>
+</div>
 
-        p.admonition-title {
-            background-color: rgba(68, 137, 255, 0.253);
-            border-top-left-radius: .1rem;
-            border-bottom-color: rgb(68, 138, 255);
-            border-bottom-style: solid;
-            border-bottom-width: 0px;
-            border-left-color: rgb(68, 138, 255);
-            border-left-style: solid;
-            border-left-width: .2rem;
-            padding-left: 1rem;
-            padding-right: .6rem;
-            border: 0 solid #448aff;
-            margin-top: 0;
-            margin-bottom: 0;
-            padding-bottom: .4rem;
-            padding-top: .4rem;
-            position: relative;
-        }
+<div class="d-print-none">
+    <div class="print_notes">
+        <p><strong>If you are going to print these notes, please set the margins to minimum to make these pages look nice on paper.</strong></p>
+    </div>
+    <div>
+        <button class="btn btn-primary d-print-none shadow" onclick="window.print()">Print this page</button>
+    </div>
+</div>
 
-        code {
-            background-color: rgb(236, 236, 236);
-            border-radius: .1rem;
-            padding: 0.294em;
-            border-bottom-left-radius: 2px;
-            border-bottom-right-radius: 2px;
-            border-top-left-radius: 2px;
-            border-top-right-radius: 2px;
-            box-sizing: border-box;
-            color: rgb(0, 0, 0);
-            direction: ltr;
-            font-family: "Roboto Mono", Consolas;
-            padding-bottom: 0px;
-            padding-left: 4px;
-            padding-right: 4px;
-            padding-top: 0px;
-        }
-
-        body {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            font-size: smaller;
-        }
-        hr {
-            page-break-after: always;
-            clear: both;
-            visibility: hidden;
-        }
-        .column {
-            float: left;
-            width: 50%;
-        }
-
-        .left {
-            width: 75%;
-        }
-
-        .right {
-            width: 25%;
-        }
-
-/* Clear floats after the columns */
-        .row:after {
-            content: "";
-            display: table;
-            clear: both;
-        }
-        
-        .name {
-            color: blue;
-        }
-    </style>
-
-</head>
-
-<body>
-    <article class="md-content__inner md-typeset">
-
-        <div class="row">
-            <div class="column left"><h1 id="first-login-cjm">IT Getting Started</h1></div>
-            <div class="column right"><span class="name">{{ employee.first_name }} {{ employee.last_name }}</span></div>
-        </div>
-        
-        <br>
-        <h2 id="table-of-contents">Table of Contents</h2>
-        <ol>
-            <li>Foreward</li>
-            <li>Getting Logged in to your computer</li>
-            <li>Getting logged in to Microsoft 365</li>
-            <li>Setting up MFA</li>
-            <li>Additional topics</li>
-            <li>Company Phone</li>
-        </ol>
-        <h2 id="prerequisites">Prerequisites</h3>
-        <ul>
-            <li>For step 1 you will need a computer</li>
-            <li>For step 2 you can either have access to a computer, tablet or a smart phone<ul>
-                    <li>If you choose to use a computer, you will also need a smart phone for MFA purposes</li>
-                </ul>
-            </li>
-            <li>You have a login and temp password from the IT department</li>
+<br>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+    <li>Foreward</li>
+    <li>Getting Logged in to your computer</li>
+    <li>Getting logged in to Microsoft 365</li>
+    <li>Setting up MFA</li>
+    <li>Additional topics</li>
+    <li>Company Phone</li>
+</ol>
+<h2 id="prerequisites">Prerequisites</h3>
+<ul>
+    <li>For step 1 you will need a computer</li>
+    <li>For step 2 you can either have access to a computer, tablet or a smart phone<ul>
+            <li>If you choose to use a computer, you will also need a smart phone for MFA purposes</li>
         </ul>
-        <h2 id="assumptions">Assumptions</h3>
-        <ul>
-            <li>You know how to access the internet</li>
-            <li>You know how to access a specific URL</li>
-            <li>You have a smart phone/tablet</li>
+    </li>
+    <li>You have a login and temp password from the IT department</li>
+</ul>
+<h2 id="assumptions">Assumptions</h3>
+<ul>
+    <li>You know how to access the internet</li>
+    <li>You know how to access a specific URL</li>
+    <li>You have a smart phone/tablet</li>
+</ul>
+<h2 id="terms">Terms</h3>
+<ul>
+    <li>MFA = Multi Factor Authentication<ul>
+            <li>This is a second form of authentication that is something you have usually. This prevents almost
+                all attacks on an account.</li>
         </ul>
-        <h2 id="terms">Terms</h3>
-        <ul>
-            <li>MFA = Multi Factor Authentication<ul>
-                    <li>This is a second form of authentication that is something you have usually. This prevents almost
-                        all attacks on an account.</li>
-                </ul>
-            </li>
-        </ul>
-        <hr>
-        <h2 id="foreward">Foreward</h2>
-        <p>Welcome to the company, these instructions will help you get signed in to Microsoft 365 for the first time.
-            Below you will find your username and temporary password to login with.</p>
-        <p><strong>Username:</strong> <code>{{ employee.user_name }}</code><br>
-            <strong>Password:</strong> <code>{{ employee.password }}</code><br>
-            <br>
-            <strong>Your email address is:</strong> <code>{{ employee.user_name }}@{{ employee.domain }}</code><br>
-            <br>
-            <strong>Your desk phone extension is:</strong> <code>{{ employee.extension }}</code>
-        </p>
-        <h2 id="1-getting-logged-in-to-your-computer">1. Getting Logged in to your computer</h2>
-        <ul>
-            <li>When you first get to your computer, the first screen you will see is the <code>lock screen</code>.
-            </li>
-            <li>You will need to press <code>CTRL</code> + <code>ALT</code> + <code>DELETE</code> in order to bring up
-                <code>login screen</code>.
-            </li>
-            <li>Type in your username and password from above. <ul>
-                    <li>capitilization does not matter for your username</li>
-                </ul>
-            </li>
-            <li>You will be prompted to change your password <ul>
-                <li>Your password must contain the following: <ul>
-                    <li>At least 8 characters</li>
-                    <li>three of the following four items <ul>
-                        <li>A capital letter</li>
-                        <li>A lowercase letter</li>
-                        <li>A number</li>
-                        <li>A special character <code>!@#$()>%^&*[]{}<></code></li>
-                    </ul></li>
-                </ul></li>
-                <li>Your password <b>cannot</b> contain any of the following: <ul>
-                    <li>Any part of your name</li>
-                    <li>Any part of the company name</li>
-                    <li>Elkader or Iowa</li>
-                    <li>Any common phrases like "password" or "p@ssw0rd"</li>
-                </ul></li>
-            </ul>
-            </li>
+    </li>
+</ul>
+<hr>
+<h2 id="foreward">Foreward</h2>
+<p>Welcome to the company, these instructions will help you get signed in to Microsoft 365 for the first time.
+    Below you will find your username and temporary password to login with.</p>
+<p><strong>Username:</strong> <code>{{ employee.user_name }}</code><br>
+    <strong>Password:</strong> <code>{{ employee.password }}</code><br>
+    <strong>Your email address is:</strong> <code>{{ employee.user_name }}@{{ employee.domain }}</code><br>
+    {% if employee.extension %}
+    <strong>Your desk phone number is:</strong> <code>{{ employee.extension }}</code><br>
+    {% endif %}
 
-            <li>It may take some time to log you in the first time on a new computer.</li>
-            <li>Congrats you are logged in and ready to proceed</li>
+    {% if employee.cell_phone %}
+    <strong>Your cell phone number is:</strong> <code>{{ employee.cell_phone }}</code><br>
+    {% endif %}
+</p>
+<h2 id="1-getting-logged-in-to-your-computer">1. Getting Logged in to your computer</h2>
+<ul>
+    <li>When you first get to your computer, the first screen you will see is the <code>lock screen</code>.
+    </li>
+    <li>You will need to press <kbd>CTRL</kbd> + <kbd>ALT</kbd> + <kbd>DELETE</kbd> in order to bring up the
+        <code>login screen</code>.
+    </li>
+    <li>Type in your username and password from above. <ul>
+            <li>capitilization does not matter for your username</li>
         </ul>
-        <div class="admonition note">
-            <p class="admonition-title">Note</p>
-            <p>I'd recommend going to take a tour at this point.<br>
-                Once you change your password it needs to sync in order for the next step to go through.<br>
-                <strong>This can take up to 30 minutes in some cases.</strong>
-            </p>
-        </div>
-        <hr>
-        <h2 id="2-getting-logged-in-to-microsoft-365">2. Getting logged in to Microsoft 365</h2>
-        <p>The first step is getting on the Microsoft 365 Portal</p>
-        <ul>
-            <li>In your browser of choice go to <code>portal.office.com</code>
-                <ul>
-                    <li>Microsoft Edge is installed by default, and works great for everything that the IT department
-                        knows about. If you have issues submit a ticket and we can help out.</li>
-                </ul>
-            </li>
-        </ul>
-        <div class="admonition note">
-            <p class="admonition-title">Note</p>
-            <p>If the next step fails, saying your password is incorrect, please wait a few more minutes.<br>
-                <b>If you have been waiting longer than one hour please have your supervisor contact the IT department to
-                    take a look at it.</b></p>
-        </div>
-        <ul>
-            <li>Type in the email address provided to you from IT<ul>
-                    <li>We use the following naming convention</li>
-                    <li>username @ company domain</li>
-                    <li>Ex: <code>ppalmersheim@{{ employee.domain }}</code></li>
-                </ul>
-            </li>
-            <li>Click <code>Next</code></li>
-            <li>Type in the password that you changed your temporary password to</li>
-            <li>You will be prompted to setup MFA next</li>
-        </ul>
-        <h2 id="3-setting-up-mfa">3. Setting up MFA</h2>
-        <p>After you log in for the first time you will be told that your organization needs more information. This is
-            the setup process for completing the MFA process.</p>
-        <ul>
-            <li>The first method is an APP that needs to be installed on a smart device. We recommend installing this on
-                your smart phone. <ul>
-                    <li>This app has no permissions to view anything on your phone, and the company is not able to see
-                        any data on your phone.</li>
-                </ul>
-            </li>
-            <li>Follow the instructions in your web browser for how to setup the app.</li>
-            <li>After installing the app and setting up the first method, it will ask you for a second method.<ul>
-                    <li>This form can be either a text message or an email address</li>
-                    <li>If you choose email, you can not use a work email</li>
-                </ul>
-            </li>
-        </ul>
-        <p>After you setup MFA you will be greeted with the Microsoft 365 Portal. From here you can access all the web
-            apps that your license allows. Examples are Outlook, Word, Powerpoint or OneDrive. You can also access
-            SharePoint sites that you have access to as well.
-        </p>
-        <div class="row">
-            <div class="column">
-                <p>
-                Scan this code to download for IOS
-                </p>
-                <img src="{% static 'qr-code-ios.png' %}" width="150px">
-            </div>
-            <div class="column">
-                <p>
-                    Scan this code to download for Android
-                </p>
-                <img src="{% static 'qr-code-android.png' %}" width="150px">
-            </div>
-        </div>
-        
-
-        <hr>    
-        <h2 id="4-cybersecurity-training">4. Cybersecurity Training</h2>
-        <p>We have been doing cybersecurity training since the beginning of 2022. We have recently (September 2022) decided that this is
-            is now manadatory for all employees that will use a computer. This training takes 20-30 minutes to complete, and has proven to be very valuable and reduces compromise.</p>
-        <p>To take the training please follow these instructions:
-        <ul>
-            <li>Open Edge</li>
-            <li>go to <code>training.knowbe4.com</code></li>
-            <li>Enter in your username <ul>
-                <li><code>{{ employee.user_name }}@{{ employee.domain }}</code></li>
+    </li>
+    <li>You will be prompted to change your password <ul>
+        <li>Your password must contain the following: <ul>
+            <li>At least 12 characters</li>
+            <li>three of the following four items <ul>
+                <li>A capital letter</li>
+                <li>A lowercase letter</li>
+                <li>A number</li>
+                <li>A special character <code>!@#$()>%^&*[]{}<></code></li>
             </ul></li>
-            <li>From here you can start your training</li>
-            <li>You can also click on <code>Library</code> at the top and take any of the optional training that is available <ul>
-                <li>This training has information on other topics in more depth than the required training</li>
-            </ul></li>
-        </ul> 
-        </p>
-        <p>When you are done with the training, there is no need to tell the IT department, we are able to see who has and hasn't done their training on our end.</p>
+        </ul></li>
+        <li>Your password <b>cannot</b> contain any of the following: <ul>
+            <li>Any part of your name</li>
+            <li>Any part of the company name</li>
+            <li>Elkader or Iowa</li>
+            <li>Any common phrases like "password" or "p@ssw0rd"</li>
+        </ul></li>
+    </ul>
+    </li>
 
-        <h2 id="5-additional-topics">5. Additional topics</h2>
-        <p>To submit a ticket to the IT department you can send an email to <code>it@{{ employee.domain }}</code>. </p>
-        <p>You can also submit a ticket via the web portal. On your desktop you will find an icon labeled
-            <code>IT Helpdesk</code>. The first time you visit you will need to create an account, and from there you
-            can submit tickets as well.
-        </p>
-        <p>You will also find on your desktop a link to the <code>IT Knowledgebase</code> this is a work in progress and
-            may change at any time.</p>
+    <li>It may take some time to log you in the first time on a new computer.</li>
+    <li>Congrats you are logged in and ready to proceed</li>
+</ul>
+<div class="admonition note">
+    <p class="admonition-title">Note</p>
+    <p>I'd recommend going to take a tour at this point.<br>
+        Once you change your password it needs to sync in order for the next step to go through.<br>
+        <strong>This can take up to 30 minutes in some cases.</strong>
+    </p>
+</div>
+<hr>
+<h2 id="2-getting-logged-in-to-microsoft-365">2. Getting logged in to Microsoft 365</h2>
+<p>The first step is getting on the Microsoft 365 Portal</p>
+<ul>
+    <li>In your browser of choice go to <code>portal.office.com</code>
+        <ul>
+            <li>Microsoft Edge is installed by default, and works great for everything that the IT department
+                knows about. If you have issues submit a ticket and we can help out.</li>
+        </ul>
+    </li>
+</ul>
+<div class="admonition note">
+    <p class="admonition-title">Note</p>
+    <p>If the next step fails, saying your password is incorrect, please wait a few more minutes.<br>
+        <b>If you have been waiting longer than one hour please have your supervisor contact the IT department to
+            take a look at it.</b></p>
+</div>
+<ul>
+    <li>Type in the email address provided to you from IT<ul>
+            <li>We use the following naming convention</li>
+            <li>username @ company domain</li>
+            <li>Ex: <code>ppalmersheim@{{ employee.domain }}</code></li>
+        </ul>
+    </li>
+    <li>Click <code>Next</code></li>
+    <li>Type in the password that you changed your temporary password to</li>
+    <li>You will be prompted to setup MFA next</li>
+</ul>
+<hr>
+<h2 id="3-setting-up-mfa">3. Setting up MFA</h2>
+<p>After you log in for the first time you will be told that your organization needs more information. This is
+    the setup process for completing the MFA process.</p>
+<ul>
+    <li>The first method is an APP that needs to be installed on a smart device. We recommend installing this on
+        your smart phone. <ul>
+            <li>This app has no permissions to view anything on your phone, and the company is not able to see
+                any data on your phone.</li>
+        </ul>
+    </li>
+    <li>Follow the instructions in your web browser for how to setup the app.</li>
+    <li>After installing the app and setting up the first method, it will ask you for a second method.<ul>
+            <li>This form can be either a text message or an email address</li>
+            <li>If you choose email, you can not use a work email</li>
+        </ul>
+    </li>
+</ul>
+<p>After you setup MFA you will be greeted with the Microsoft 365 Portal. From here you can access all the web
+    apps that your license allows. Examples are Outlook, Word, Powerpoint or OneDrive. You can also access
+    SharePoint sites that you have access to as well.
+</p>
+<div class="row">
+    <div class="column">
+        <p>Scan this code to download for IOS</p>
+        <div style="margin-bottom: 10px;"><img src="{% static 'qr-code-ios.png' %}" width="150px"></div>
+        <div><a class="btn btn-primary d-print-none" href="https://apps.apple.com/us/app/microsoft-authenticator/id983156458" role="button">Apple Play Store</a></div>
+        
+    </div>
+    <div class="column">
+        <p>Scan this code to download for Android</p>
+        <div style="margin-bottom: 10px;"><img src="{% static 'qr-code-android.png' %}" width="150px"></div>
+        <div><a class="btn btn-primary d-print-none" href="https://play.google.com/store/apps/details?id=com.azure.authenticator&pli=1" role="button">Google Play</a></div>
+    </div>
+</div>
 
 
-    </article>
+<hr>    
+<h2 id="4-cybersecurity-training">4. Cybersecurity Training</h2>
+<p>We have been doing cybersecurity training since the beginning of 2022. We have recently (September 2022) decided that this is
+    is now manadatory for all employees that will use a computer. This training takes 20-30 minutes to complete, and has proven to be very valuable and reduces compromise.</p>
+<p>To take the training please follow these instructions:
+<ul>
+    <li>Open Edge</li>
+    <li>go to <code>training.knowbe4.com</code></li>
+    <li>Enter in your username <ul>
+        <li><code>{{ employee.user_name }}@{{ employee.domain }}</code></li>
+    </ul></li>
+    <li>From here you can start your training</li>
+    <li>You can also click on <code>Library</code> at the top and take any of the optional training that is available <ul>
+        <li>This training has information on other topics in more depth than the required training</li>
+    </ul></li>
+</ul> 
+</p>
+<p>When you are done with the training, there is no need to tell the IT department, we are able to see who has and hasn't done their training on our end.</p>
 
-</body>
+<h2 id="5-additional-topics">5. Additional topics</h2>
+<p>To submit a ticket to the IT department you can send an email to <code>it@{{ employee.domain }}</code>. </p>
+<p>You can also submit a ticket via the web portal. On your desktop you will find an icon labeled
+    <code>IT Helpdesk</code>. The first time you visit you will need to create an account, and from there you
+    can submit tickets as well.
+</p>
+<p><span class="text-decoration-line-through">You will also find on your desktop a link to the IT Knowledgebase this is a work in progress and
+    may change at any time.</span> This is currently not working at the moment, and the link will not be available.</p>
 
-</html>
+</article>
+
+{% endblock %}

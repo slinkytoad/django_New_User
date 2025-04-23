@@ -1,12 +1,20 @@
-{% extends 'userdoc/base.html' %} 
+{% extends 'base.html' %} 
+{% load django_bootstrap5 %}
+
+{% block title %}
+    Doc Creation Form
+{% endblock %}
 
 {% block content %}
 <br> 
+{% bootstrap_messages %}
 <div class="container">
-    <form action="/userdoc/new/" method="post">
+    <form action="/new/" method="post" class="form">
         {% csrf_token %}
-        {{ form }}
-        <input type="submit" value="Submit">
+
+        {% bootstrap_form form %}
+
+        {% bootstrap_button button_type="submit" content="Create" %}
     </form>
 </div>
 {% endblock %}

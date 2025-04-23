@@ -1,0 +1,107 @@
+{% extends 'bootstrap.html' %}
+
+{% load django_bootstrap5 %}
+
+{% block bootstrap5_extra_head %}
+
+<style>
+    
+    @page {
+        margin-top: 0.25in;
+        margin-left: 0.25in;
+    }
+        
+    hr {
+        page-break-after: always;
+        clear: both;
+        visibility: hidden;
+    }
+    .print_notes {
+        border-color: #ff4444;
+        border: 0 solid #ff4454;
+        break-inside: avoid;
+        display: flow-root;
+        border-radius: .1rem;
+        padding: 0.6rem;
+        margin: 1.5625em 0;
+        border-left-width: .2rem;
+        background-color: rgba(255, 255, 255, 0.024);
+        box-shadow: rgba(0, 0, 0, .05) 10px 10px 10px 10px;
+        width: 90%
+    }
+    .admonition.note {
+        border-color: #448aff;
+        border: 0 solid #448aff;
+        break-inside: avoid;
+        display: flow-root;
+        border-radius: .1rem;
+        padding: 0.6rem;
+        margin: 1.5625em 0;
+        border-left-width: .2rem;
+        background-color: rgba(255, 255, 255, 0.024);
+        box-shadow: rgba(0, 0, 0, .05) 10px 10px 10px 10px;
+        width: 90%;
+    }
+
+    p.admonition-title {
+        background-color: rgba(68, 137, 255, 0.253);
+        border-top-left-radius: .1rem;
+        border-bottom-color: rgb(68, 138, 255);
+        border-bottom-style: solid;
+        border-bottom-width: 0px;
+        border-left-color: rgb(68, 138, 255);
+        border-left-style: solid;
+        border-left-width: .2rem;
+        padding-left: 1rem;
+        padding-right: .6rem;
+        border: 0 solid #448aff;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-bottom: .4rem;
+        padding-top: .4rem;
+        position: relative;
+    }
+    .column {
+        float: left;
+        width: 50%;
+    }
+    .left {
+        width: 50%;
+    }
+    .right {
+        width: 50%;
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+    
+    .name {
+        color: blue;
+    }
+</style>
+
+{% endblock %}
+
+
+{% block bootstrap5_content %}
+    <div class="container">
+        <nav class="navbar d-print-none" style="background-color: #D7D7D7 ;" >
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/userdoc">New User Packets</a>
+                <ul class="nav nav-pills justify-content-end">
+                    <li class="nav-item"><a class="nav-link" href="{% url 'userdoc:index' %}">home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'userdoc:new' %}">Add New User</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        {% autoescape off %}{% bootstrap_messages %}{% endautoescape %}
+
+        {% block content %}(no content){% endblock %}
+    </div>
+
+{% endblock %}
