@@ -23,6 +23,7 @@ COPY ./new_user .
 
 # Expose the port gunicorn will run on
 EXPOSE 8000
+RUN python3 manage.py migrate
 
 # Command to run gunicorn
 CMD ["gunicorn", "new_user.wsgi:application", "--workers", "3", "--bind", "0.0.0.0:8000"]
