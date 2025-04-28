@@ -8,4 +8,4 @@ services:
     environment:
       - DEBUG=0
     networks:
-      - my_network
+      - django_network
