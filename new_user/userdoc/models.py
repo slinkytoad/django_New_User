@@ -7,6 +7,7 @@ class Employee(models.Model):
     last_name = models.CharField(max_length=255)
     user_name = models.CharField(max_length=255, blank=True, null=True)
     domain = models.CharField(max_length=255)
+    eld_User = models.BooleanField(default=False, blank=True, null=True)
     password = models.CharField(max_length=255, blank=True, null=True)
     extension = models.CharField(max_length=10, blank=True, null=True)
     cell_phone = models.CharField(max_length=15, blank=True, null=True)

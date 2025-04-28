@@ -5,13 +5,14 @@ class UserCreateForm(forms.ModelForm):
     template_name = 'userdoc/form_snippet.html'
     class Meta:
         model = Employee
-        fields = ['first_name', 'last_name', 'user_name', 'domain', 'password', 'extension', 'cell_phone', 'slug']
+        fields = ['first_name', 'last_name', 'user_name', 'domain', 'password', 'extension', 'cell_phone', 'slug', 'eld_User']
 
     first_name = forms.CharField(label='First Name', max_length=100)
     last_name = forms.CharField(label='Last Name', max_length=100)
     user_name = forms.CharField(label="Username", max_length=100)
     domain = forms.ChoiceField(label="Domain", choices=[("cjmoyna.com", "cjmoyna.com"), ("mobiletracksolutions.com", "mobiletracksolutions.com")])
     password = forms.CharField(label="Password")
+    eld_User = forms.BooleanField(label="Eld User", required=False)
     extension = forms.CharField(label="Extension", required=False)
     cell_phone = forms.CharField(label="Cell Phone", required=False, max_length=15)
     slug = forms.CharField(label="Slug", required=False, widget=forms.HiddenInput())
