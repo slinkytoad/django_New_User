@@ -9,3 +9,7 @@ services:
       - DEBUG=0
     networks:
       - django_network
+networks:
+  django_network:
+    name: django_network
+    external: true
