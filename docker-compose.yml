@@ -2,6 +2,7 @@ services:
   web:
     build: .
     container_name: new_user_app
+    restart: unless-stopped
     ports:
       - "8000:8000"
     environment:
